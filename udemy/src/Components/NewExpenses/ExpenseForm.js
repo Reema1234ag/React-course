@@ -1,6 +1,6 @@
 import React,{useState}from 'react'
 import './ExpensesForm.css'
-export default function ExpenseForm() {
+export default function ExpenseForm(props) {
     const [enteredTitle, setEnteredTitle]= useState('');
     const [enteredAmount, setEnteredAmount]= useState('');
     const [enteredDate, setEnteredDate]= useState('');
@@ -45,7 +45,8 @@ export default function ExpenseForm() {
             amount:enteredAmount,
             date:new Date(enteredDate),
         };
-        console.log(expenseData)
+        //console.log(expenseData)  
+        props.onSaveExpenseData(expenseData);        //communication b/w child and parent component
         setEnteredTitle('');        //two way binding
         setEnteredAmount('');
         setEnteredDate('');
